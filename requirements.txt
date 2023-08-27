@@ -1,0 +1,6 @@
+Flask
+openai == 0.27.9
+# mysql-connector-python==8.0.33
+# python-dotenv
+# seaborn-0.12.2
+# imbalanced-learn-0.10.1
