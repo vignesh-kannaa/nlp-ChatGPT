@@ -1,8 +1,12 @@
 from flask import Flask, request, jsonify
 import openai
 import json
+import os
+from dotenv import load_dotenv
 
-openai.api_key = "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"
+load_dotenv()
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 
@@ -26,10 +30,11 @@ def chat():
         messages.append({"role": "user", "content": userText})
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=messages
+            messages=messages,
+            max_tokens=30
         )
         ChatGPT_reply = response["choices"][0]["message"]["content"]
-        messages.append({"role": "assistant", "content": ChatGPT_reply})
+        messages.append({"role": "system", "content": ChatGPT_reply})
         return jsonify(ChatGPT_reply)
 
     # if 'messages' in data:

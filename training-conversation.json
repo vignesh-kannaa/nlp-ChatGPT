@@ -1,5 +1,8 @@
 [
-  { "role": "system", "content": "You are an indoor navigator assistant." },
+  {
+    "role": "system",
+    "content": "You are an indoor navigator assistant for Aston Main Building 2nd floor in Alice Lab."
+  },
   { "role": "user", "content": "Hey" },
   {
     "role": "system",
