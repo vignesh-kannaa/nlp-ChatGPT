@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
+if openai.api_key is not None:
+    print('api key added')
 
 app = Flask(__name__)
 
@@ -18,8 +20,6 @@ with open('training-conversation.json', 'r') as json_file:
 messages = []
 for message in conversation_data:
     messages.append(message)
-
-print(messages)
 
 
 @app.route('/api/chat', methods=['POST'])
