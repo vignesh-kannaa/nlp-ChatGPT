@@ -27,6 +27,7 @@ def chat():
     data = request.get_json()
     userText = data.get('msg')
     if userText:
+        print('input: ', userText)
         messages.append({"role": "user", "content": userText})
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
@@ -35,6 +36,7 @@ def chat():
         )
         ChatGPT_reply = response["choices"][0]["message"]["content"]
         messages.append({"role": "system", "content": ChatGPT_reply})
+        print('Output: ', ChatGPT_reply)
         return jsonify(ChatGPT_reply)
 
     # if 'messages' in data:
